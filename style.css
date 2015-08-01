@@ -1,0 +1,17 @@
+/*
+Theme Name: NaLUG 2015
+Theme URI: http://www.nalug.net
+Author: NaLUG Team
+Author URI: http://www.nalug.net
+Version: 1.0
+Description: This is our 2015 theme
+Tags: nalug, theme, linux,
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: nalug
+*/
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
