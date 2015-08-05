@@ -1,0 +1,147 @@
+/*
+Theme Name: NaLUG 2015
+Theme URI: http://www.nalug.net
+Author: NaLUG Team
+Author URI: http://www.nalug.net
+Version: 1.0
+Description: This is our 2015 theme
+Tags: nalug, theme, linux,
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: nalug
+*/
+
+
+/* Coolors Exported Palette - coolors.co/292626-d3261b-23dd89-b0e0f2-e8eae5
+
+$text: #292626;        //rgba(41, 38, 38, 100)
+$rossonalug: #d3261b;  //rgba(211, 38, 27, 100)
+$verdino: #23dd89;     //rgba(35, 221, 137, 100)
+$azzurrino: #b0e0f2;   //rgba(176, 224, 242, 100)
+$background: #e8eae5;  //rgba(232, 234, 229, 100)
+*/
+
+body {
+  padding-top: 20px;
+  color: #292626;
+}
+
+
+/* Page layout */
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-wrapper{
+    margin-bottom: 70px;
+}
+
+.my-container{
+    width: 100%;
+    float:left;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+
+#home{
+    height: 540px;
+}
+
+.in-panel{
+    width:970px;
+    margin: 0 auto;
+    min-height: 540px;
+}
+
+.in-panel h1{
+    margin-top:120px;
+    float:left;
+}
+
+.in-panel p{
+    width:100%;
+    clear: both;
+    margin-bottom:90px
+}
+
+.nav-fixed {
+    position: fixed;
+    width: inherit;
+    margin: 30px auto;
+    z-index: 1030;
+}
+
+/* Customize the nav-justified links to be fill the entire space of the .navbar */
+.nav-justified {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.nav-justified > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #777;
+  text-align: center;
+  background-color: #e8eae5; /* Old browsers */
+  /*background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e5e5e5));
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);
+  background-image:      -o-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);
+  background-image:         linear-gradient(to bottom, #f5f5f5 0%,#e5e5e5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9
+  background-repeat: repeat-x; /* Repeat the gradient */
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.nav-justified > .active > a,
+.nav-justified > .active > a:hover,
+.nav-justified > .active > a:focus {
+  background-color: #d3261b;
+  background-image: none;
+  color: #FFF;
+  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
+}
+
+.nav-justified > li:first-child > a {
+  border-radius: 5px 5px 0 0;
+}
+
+.nav-justified > li:last-child > a {
+  border-bottom: 0;
+  border-radius: 0 0 5px 5px;
+}
+
+@media (min-width: 768px) {
+  .nav-justified {
+    max-height: 52px;
+  }
+  .nav-justified > li > a {
+    border-right: 0px;
+    border-left: 0px ;
+  }
+  .nav-justified > li:first-child > a {
+    border-left: 0;
+    border-radius: 5px 0 0 5px;
+  }
+  .nav-justified > li:last-child > a {
+    border-right: 0;
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .masthead,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

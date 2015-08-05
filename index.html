@@ -1,0 +1,94 @@
+<!doctype HTML>
+<html lang=it>
+	<head>
+    	<meta charset="utf-8">
+		<!-- Disable zooming -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body data-spy="scroll" data-target="#my-navbar">
+		<div class="container">
+			<div class="masthead">
+				<div class="container">
+					<div id="my-navbar" class="navbar navbar-wrapper nav-fixed navbar-collapse">
+				        <nav>
+				          <ul class="nav nav-justified">
+				            <li class="active"><a href="#home">Home</a></li>
+							<li><a href="#about">About</a></li>
+				            <li><a href="#riunioni">Riunioni ed eventi</a></li>
+				            <li><a href="#news">News</a></li>
+				            <li><a href="#jobs">Jobs</a></li>
+				            <li><a href="#partner">Partner & Sponsors</a></li>
+				            <li><a href="#contatti">Contatti</a></li>
+				          </ul>
+				        </nav>
+				    </div>
+				</div><!-- container -->
+			</div><!--navbar-background-->
+
+			<div class="my-container">
+				<div class="col-md-12 full-panel">
+					<div id="home" class="in-panel">
+						<img src="img/logo.png" alt="NaLUG Logo" class="logo img-responsive center-block">
+					</div>
+				</div>
+				<div class="col-md-12 full-panel">
+					<div id="about" class="in-panel">
+						<h1>About</h1>
+					</div>
+				</div>
+				<div class="col-md-12 full-panel">
+					<div id="riunioni" class="in-panel">
+						<h1>Riunioni</h1>
+					</div>
+				</div>
+				<div class="col-md-12 full-panel">
+					<div id="news" class="in-panel">
+						<h1>News</h1>
+					</div>
+				</div>
+				<div class="col-md-12 full-panel">
+					<div id="jobs" class="in-panel">
+						<h1>Jobs</h1>
+					</div>
+				</div>
+				<div class="col-md-12 full-panel">
+					<div id="partner" class="in-panel">
+						<h1>Partner & Sponsors</h1>
+					</div>
+				</div>
+				<div class="col-md-12 full-panel">
+					<div id="contatti" class="in-panel">
+						<h1>Contatti</h1>
+					</div>
+				</div>
+			</div>
+		</div><!--container-->
+
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<!-- Scrolling Animation -->
+		<script type="text/javascript">// <![CDATA[
+			$(".navbar-collapse ul li a[href^='#']").on('click', function(e) {
+				target = this.hash;
+				// prevent default anchor click behavior
+				e.preventDefault();
+
+				// animate
+				$('html, body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 300, function(){
+					// when done, add hash to url
+					// (default click behaviour)
+					window.location.hash = target;
+				});
+			});// ]]>
+		</script>
+	</body>
+</html>
