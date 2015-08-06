@@ -21,6 +21,26 @@ function nalug_setup(){
 endif; // nalug_setup
 add_action( 'after_setup_theme', 'nalug_setup' );
 
+// setting the custom menu settings
+function remove_nav_container($args = ''){
+	$args['container'] = 'div';
+	$args['container_id'] = 'my-navbar';
+	$args['container_class'] = 'navbar navbar-wrapper navbar-fixed navbar-collapse';
+	$args['items_wrap'] = '<nav><ul class="nav nav-justified">%3$s</ul></nav>';
+	return $args;
+}
+add_filter('wp_nav_menu_args', 'remove_nav_container');
+
+// adding a custom class to active menu item
+function custom_class_item($classes, $item){
+	if ( in_array('current-menu-item', $classes) ){
+		$classes[] = 'active ';
+	}
+	return $classes;
+}
+add_filter('nav_menu_css_class', 'custom_class_item');
+
+
 // Nalug settings page
 function theme_settings_page(){
 	?>
@@ -59,9 +79,9 @@ function handle_logo_upload()
 
 
 function display_theme_panel_logo(){
-		add_settings_section("section", "Logo Settings", null, "nalug-settings");
-    add_settings_field("logo", "Logo", "logo_display", "nalug-settings", "section");
-		register_setting("section", "logo", "handle_logo_upload");
+	add_settings_section("section", "Logo Settings", null, "nalug-settings");
+  add_settings_field("logo", "Logo", "logo_display", "nalug-settings", "section");
+	register_setting("section", "logo", "handle_logo_upload");
 }
 add_action("admin_init", "display_theme_panel_logo");
 
@@ -103,8 +123,18 @@ function add_theme_menu_item()
     add_menu_page("NaLUG Settings", "NaLUG Settings", "manage_options", "nalug-settings", "theme_settings_page", null, 99);
 }
 add_action("admin_menu", "add_theme_menu_item");
+
+
+
 // Register NaLug scripts
 function nalug_scripts(){
-	wp_enqueue_style('fontawesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',array(), null);
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), 'v3.3.5', 'all');
+	wp_enqueue_style( 'bootstrap-theme', get_template_directory_uri() . '/css/bootstrap-theme.min.css', array('bootstrap'), 'v3.3.5', 'all' );
+	wp_enqueue_style( 'fontawesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',array(), null);
+	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css', array(), 'v0.1', 'all');
+
+	wp_enqueue_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), 'v0.1', 'all');
+	wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), 'v3.3.5', 'all');
+
 }
 add_action( 'wp_enqueue_scripts', 'nalug_scripts' );

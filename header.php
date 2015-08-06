@@ -10,18 +10,21 @@
 	<![endif]-->
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
-	<div id="nav-top" class="nav-top">
-
-		<?php if ( has_nav_menu( 'primary' ) ) : ?>
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<?php
-					// Primary navigation menu.
-					wp_nav_menu( array(
-						'menu_class'     => 'nav-menu',
-						'theme_location' => 'primary',
-					) );
-				?>
-			</nav><!-- .main-navigation -->
+<body <?php body_class(); ?> data-spy="scroll" data-target="#my-navbar">
+	<div class="container">
+		<?php if ( has_nav_menu( 'primary' )) : ?>
+			<div class="masthead">
+				<div class="container">
+					<div id="my-navbar" class="navbar navbar-wrapper nav-fixed navbar-collapse">
+						<?php
+							// Primary navigation menu.
+							wp_nav_menu( array(
+								'theme_location' => 'primary'
+							) );
+						?>
+					</div>
+				</div><!-- container -->
+			</div><!--navbar-background-->
 		<?php endif; ?>
-	</div> <!-- nav top -->
+	</div>
+	<div class="container">
