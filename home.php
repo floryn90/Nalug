@@ -2,7 +2,7 @@
 <div class="my-container">
 	<div class="col-md-12 full-panel">
 		<div id="home" class="in-panel">
-			<img src="img/logo.png" alt="NaLUG Logo" class="logo img-responsive center-block">
+			<img src="<?php echo get_option('logo', get_template_directory_uri() . '/img/logo.png'); ?>" alt="NaLUG Logo" class="logo img-responsive center-block">
 		</div>
 	</div>
 	<div class="col-md-12 full-panel">
