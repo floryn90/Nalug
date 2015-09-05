@@ -24,21 +24,20 @@ add_action( 'after_setup_theme', 'nalug_setup' );
 // setting the custom menu settings
 function remove_nav_container($args = ''){
 	$args['container'] = 'div';
-	$args['container_id'] = 'my-navbar';
-	$args['container_class'] = 'navbar navbar-wrapper navbar-fixed navbar-collapse';
-	$args['items_wrap'] = '<nav><ul class="nav nav-justified">%3$s</ul></nav>';
+	$args['container_class'] = 'navbar navbar-collapse navbar-menubuilder';
+	$args['items_wrap'] = '<ul class="nav navbar-nav navbar-left">%3$s</ul>';
 	return $args;
 }
 add_filter('wp_nav_menu_args', 'remove_nav_container');
 
 // adding a custom class to active menu item
+add_filter('nav_menu_css_class', 'custom_class_item', 10, 2);
 function custom_class_item($classes, $item){
 	if ( in_array('current-menu-item', $classes) ){
 		$classes[] = 'active ';
 	}
 	return $classes;
 }
-add_filter('nav_menu_css_class', 'custom_class_item');
 
 
 // Nalug settings page
@@ -130,6 +129,7 @@ add_action("admin_menu", "add_theme_menu_item");
 function nalug_scripts(){
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), 'v3.3.5', 'all');
 	wp_enqueue_style( 'bootstrap-theme', get_template_directory_uri() . '/css/bootstrap-theme.min.css', array('bootstrap'), 'v3.3.5', 'all' );
+	//wp_enqueue_style( 'bootstrap-custom-theme', get_template_directory_uri() . '/css/bootstrap-theme.css', array('bootstrap'), 'v0.1', 'all' );
 	wp_enqueue_style( 'fontawesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',array(), null);
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css', array(), 'v0.1', 'all');
 

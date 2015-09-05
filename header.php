@@ -11,20 +11,23 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?> data-spy="scroll" data-target="#my-navbar">
-	<div class="container">
+	<div class="container-fluid">
 		<?php if ( has_nav_menu( 'primary' )) : ?>
-			<div class="masthead">
+			<div id="bootstrap-menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
 				<div class="container">
-					<div id="my-navbar" class="navbar navbar-wrapper nav-fixed navbar-collapse">
-						<?php
-							// Primary navigation menu.
-							wp_nav_menu( array(
-								'theme_location' => 'primary'
-							) );
-						?>
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">Brand</a>
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+						</button>
 					</div>
-				</div><!-- container -->
-			</div><!--navbar-background-->
+					<?php
+						// Primary navigation menu.
+						wp_nav_menu( array(
+							'theme_location' => 'primary'
+						) );
+					?>
+				</div><!--.container-fluid -->
+			</div><!--.bootstrap-menu-->
 		<?php endif; ?>
-	</div>
+	</div><!--.container -->
 	<div class="container">
