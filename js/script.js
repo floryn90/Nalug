@@ -112,9 +112,10 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 
 /* custom hover
 ========================================================*/
-
+/*
 $('.btn').each(function(){
       var title = $(this).html();
       $(this).addClass('custom_hover');
       $(this).html('<span><span>'+title+'</span><strong>'+title+'</strong></span>');
 })
+*/
