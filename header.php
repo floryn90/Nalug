@@ -2,32 +2,44 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
+	<meta name = "format-detection" content = "telephone=no" />
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<!--[if lt IE 9]>
-	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
+	<!--[if lt IE 8]>
+	<div style=' clear: both; text-align:center; position: relative;'>
+	 <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+		 <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+	 </a>
+	</div>
 	<![endif]-->
 	<?php wp_head(); ?>
+	 <!-- <script>var $ = jQuery.noConflict();</script>-->
+	<!--[if (gt IE 9)|!(IE)]><!-->
+	<script>
+		$(document).ready(function () {
+			if ($('html').hasClass('desktop')) {
+				new WOW().init();
+			}
+		});
+	</script>
+	<!--<![endif]-->
 </head>
-<body <?php body_class(); ?> data-spy="scroll" data-target="#my-navbar">
-	<div class="container-fluid">
-		<?php if ( has_nav_menu( 'primary' )) : ?>
-			<div id="bootstrap-menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="#">Brand</a>
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-						</button>
+<body class="index">
+	<!--==============================header=================================-->
+	<header id="header">
+		<div id="stuck_container">
+			<div class="container">
+				<div class="row">
+					<div class="grid_12">
+						<h1><a href="<?php echo home_url(); ?>">NaLUG</a><span>Napoli GNU/Linux User Group</span></h1>
+						<?php
+							// Primary navigation menu.
+							wp_nav_menu( array(
+								'theme_location' => 'primary'
+							) );
+						?>
 					</div>
-					<?php
-						// Primary navigation menu.
-						wp_nav_menu( array(
-							'theme_location' => 'primary'
-						) );
-					?>
-				</div><!--.container-fluid -->
-			</div><!--.bootstrap-menu-->
-		<?php endif; ?>
-	</div><!--.container -->
-	<div class="container">
+				</div>
+			</div>
+		</div>
+	</header>
