@@ -24,14 +24,18 @@
 	</script>
 	<!--<![endif]-->
 </head>
-<body class="index">
+<body <?php body_class(); ?>>
 	<!--==============================header=================================-->
 	<header id="header">
 		<div id="stuck_container">
 			<div class="container">
 				<div class="row">
 					<div class="grid_12">
-						<h1><a href="<?php echo home_url(); ?>">NaLUG</a><span>Napoli GNU/Linux User Group</span></h1>
+						<?php if (empty(get_option('logo'))) : ?>
+							<h1><a href="<?php echo home_url(); ?>">NaLUG</a><span>Napoli GNU/Linux User Group</span></h1>
+						<?php else: ?>
+							<a href="<?php echo home_url(); ?>"><img alt="<?php echo bloginfo('title'); ?>" src="<?php echo get_option('logo'); ?>" /></a>
+						<?php endif;	?>
 						<?php
 							// Primary navigation menu.
 							wp_nav_menu( array(

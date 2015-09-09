@@ -16,7 +16,6 @@ function nalug_setup(){
 		'primary' => __( 'Primary Menu',      'nalug' ),
 		'social'  => __( 'Social Links Menu', 'nalug' ),
 	) );
-
 }
 endif; // nalug_setup
 add_action( 'after_setup_theme', 'nalug_setup' );
@@ -39,13 +38,26 @@ function custom_class_item($classes, $item){
 	return $classes;
 }
 
+// Add specific CSS class by filter
+function my_class_names( $classes ) {
+	// add 'class-name' to the $classes array
+	
+	if( is_home()){
+		$classes = array('index');
+	}elseif( is_page("about-us") ){
+		$classes = array("index-1");
+	}
+	// return the $classes array
+	return $classes;
+}
+add_filter( 'body_class', 'my_class_names' );
 
 // Nalug settings page
 function theme_settings_page(){
 	?>
 		<div class="wrap">
 		<h1>NaLUG Theme Settings page</h1>
-		<form method="post" action="options.php">
+		<form method="post" enctype="multipart/form-data" action="options.php">
 				<?php
 						settings_fields("section");
 						do_settings_sections("nalug-settings");
@@ -61,25 +73,27 @@ function logo_display()
     ?>
         <input type="file" name="logo" />
         <?php echo get_option('logo'); ?>
+        <?php submit_button('Elimina logo','primary','remove-logo'); ?>
    <?php
 }
 // Function to handle upload logo file
 function handle_logo_upload()
 {
-    if(!empty($_FILES["demo-file"]["tmp_name"]))
+	if(isset($_POST['remove-logo'])){
+		delete_option('logo');
+	}elseif(!empty($_FILES["logo"]["tmp_name"]))
     {
-        $urls = wp_handle_upload($_FILES["logo"], array('test_form' => FALSE));
+        $urls = wp_handle_upload($_FILES["logo"], array('test_form' => false));
         $temp = $urls["url"];
         return $temp;
     }
 
-    return $option;
 }
 
 
 function display_theme_panel_logo(){
 	add_settings_section("section", "Logo Settings", null, "nalug-settings");
-  add_settings_field("logo", "Logo", "logo_display", "nalug-settings", "section");
+	add_settings_field("logo", "Logo", "logo_display", "nalug-settings", "section");
 	register_setting("section", "logo", "handle_logo_upload");
 }
 add_action("admin_init", "display_theme_panel_logo");
@@ -107,7 +121,7 @@ function display_theme_panel_social_fields()
 
     add_settings_field("twitter_url", "Twitter Profile Url", "display_twitter_element", "nalug-settings", "section");
     add_settings_field("facebook_url", "Facebook Profile Url", "display_facebook_element", "nalug-settings", "section");
-		register_setting("section", "twitter_url");
+	register_setting("section", "twitter_url");
     register_setting("section", "facebook_url");
 
 }
@@ -124,16 +138,18 @@ function add_theme_menu_item()
 add_action("admin_menu", "add_theme_menu_item");
 
 
-//change jquery 
+//change jquery
 function change_jquery(){
-  wp_deregister_script('jquery');
-  wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.js', false, 'v1.11.1');
-  wp_enqueue_script('jquery');
+	if( ! is_admin() )
+	{
+		wp_deregister_script('jquery');
+		wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.js', false, 'v1.11.1');
+		wp_enqueue_script('jquery');
 
-  wp_deregister_script('jquery-migrate');
-  wp_register_script('jquery-migrate', get_template_directory_uri() . '/js/jquery-migrate-1.2.1.js', false, 'v1.2.1');
-  wp_enqueue_script('jquery-migrate');  
-
+		wp_deregister_script('jquery-migrate');
+		wp_register_script('jquery-migrate', get_template_directory_uri() . '/js/jquery-migrate-1.2.1.js', false, 'v1.2.1');
+		wp_enqueue_script('jquery-migrate');
+	}
 }
 add_action('init', 'change_jquery');
 // Register NaLug scripts
@@ -141,14 +157,14 @@ function load_scripts(){
 	global $wp_scripts;
 
 	wp_enqueue_script('camera', get_template_directory_uri() . '/js/camera.js', array('jquery'), 'v0.1', true);
-  wp_enqueue_script('carousel', get_template_directory_uri() . '/js/owl.carousel.js', array('jquery'), 'v0.1', true);
+    wp_enqueue_script('carousel', get_template_directory_uri() . '/js/owl.carousel.js', array('jquery'), 'v0.1', true);
 	wp_enqueue_script('stellar', get_template_directory_uri() . '/js/jquery.stellar.js', array('jquery'), 'v0.1', true);
-  wp_enqueue_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), 'v0.1', true);
+    wp_enqueue_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), 'v0.1', true);
 
-  //load script and add conditional if for ie 9
-  wp_enqueue_script('jquery-mobile', get_template_directory_uri() . '/js/jquery.mobile.customized.min.js', array('jquery'), 'v0.1', true);
-  //$wp_scripts->add_data('jquery-mobile', 'conditional', '(gt IE 9)|!(IE)');
-  //load script and add conditional if for ie 9
+	//load script and add conditional if for ie 9
+	wp_enqueue_script('jquery-mobile', get_template_directory_uri() . '/js/jquery.mobile.customized.min.js', array('jquery'), 'v0.1', true);
+	//$wp_scripts->add_data('jquery-mobile', 'conditional', '(gt IE 9)|!(IE)');
+	//load script and add conditional if for ie 9
 	wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.js', array('jquery'), 'v0.1', true);
 	//$wp_scripts->add_data('wow', 'conditional', '(gt IE 9)|!(IE)');
 
@@ -180,9 +196,9 @@ function load_styles(){
 
 	wp_enqueue_style( 'grid', get_template_directory_uri() . '/css/grid.css', array(), 'v0.1'.time(), 'all');
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css', array(), 'v0.1'.time(), 'all');
-  wp_enqueue_style( 'camera', get_template_directory_uri() . '/css/camera.css', array(), 'v0.1'.time(), 'all');
+    wp_enqueue_style( 'camera', get_template_directory_uri() . '/css/camera.css', array(), 'v0.1'.time(), 'all');
 	wp_enqueue_style( 'carousel', get_template_directory_uri() . '/css/owl.carousel.css', array(), 'v0.1'.time(), 'all');
-  wp_enqueue_style( 'fontawesome','//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',array(), null);
+    wp_enqueue_style( 'fontawesome','//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',array(), null);
 
 	//some google font
 	wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:700,400,300' );

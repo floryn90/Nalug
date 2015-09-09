@@ -18,7 +18,7 @@
 $(window).load(function() { 
   if ($('html').hasClass('desktop')) {
       $('#stuck_container').TMStickUp({
-      })
+      });
   }  
 });
 
@@ -84,7 +84,7 @@ $(function(){
   // Menu Android
   if(window.orientation!=undefined){
   var regM = /ipod|ipad|iphone/gi,
-   result = ua.match(regM)
+   result = ua.match(regM);
   if(!result) {
    $('.sf-menu li').each(function(){
     if($(">ul", this)[0]){
@@ -97,7 +97,7 @@ $(function(){
       }
      );
     } 
-   })
+   });
   }
  }
 });
@@ -106,9 +106,9 @@ var ua=navigator.userAgent.toLocaleLowerCase(),
  result = ua.match(regV),
  userScale="";
 if(!result){
- userScale=",user-scalable=0"
+ userScale=",user-scalable=0";
 }
-document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0'+userScale+'">')
+document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0'+userScale+'">');
 
 /* custom hover
 ========================================================*/

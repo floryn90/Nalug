@@ -87,7 +87,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  /*font: inherit;*/
   vertical-align: top;
 }
 /* HTML5 display-role reset for older browsers */
@@ -254,6 +254,18 @@ table {
 .container:after {
   clear: both;
 }
+
+
+/* Overrides */
+.index-1 .preffix_1 ul, li{
+	list-style:disc;
+ 	color: #727070;
+ 	margin-left: 20px;
+}
+
+
+
+
 @media (min-width: 980px) and (max-width: 1199px) {
   .row {
     margin-left: -20px;
