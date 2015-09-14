@@ -30,12 +30,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="grid_12">
+				<?php $post = get_posts(array("name" => get_option('about-slug'))); ?>
 					<header>
-						<h2><span>Welcome to Our Agency</span></h2>
+						<h2><span><?php echo $post[0]->post_title; ?></span></h2>
 					</header>
-					<h4><a href="#">Nullam Concester Tur Nerto</a></h4>
-					<p>Gamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed rabitur vel lorem sit amet nulla ullamcorper fermentum. <br><br>In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eros. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					<a href="#" class="btn">more</a>
+				</div>
+				<div class="grid_4">
+					<div class="img_container"><img src="<?php echo get_option('nalug_theme_options')['about-image'] ?>" alt="img"></div>
+				</div>
+				<div class="grid_7">
+					<?php echo geT_post_field('post_content', $post[0]->ID); ?>
+					<!-- <?php $content =  apply_filters('the_content', $post[0]->post_content); $content = str_replace( ']]>', ']]&gt;', $content ); echo $content; ?>-->
+					<a href="<?php echo $post[0]->post_link; ?>" class="btn">more</a>
 				</div>
 			</div>
 		</div>

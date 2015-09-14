@@ -417,7 +417,7 @@ p {
 }
 .index .block-2 {
   padding: 105px 0 130px;
-  text-align: center;
+  /*text-align: center;*/
 }
 .index .block-2 h2 {
   margin-bottom: 60px;
