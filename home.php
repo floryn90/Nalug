@@ -29,20 +29,24 @@
 	<div class="full-width-container block-2">
 		<div class="container">
 			<div class="row">
-				<div class="grid_12">
-				<?php $post = get_posts(array("name" => get_option('about-slug'))); ?>
-					<header>
-						<h2><span><?php echo $post[0]->post_title; ?></span></h2>
-					</header>
-				</div>
-				<div class="grid_4">
-					<div class="img_container"><img src="<?php echo get_option('nalug_theme_options')['about-image'] ?>" alt="img"></div>
-				</div>
-				<div class="grid_7">
-					<?php echo geT_post_field('post_content', $post[0]->ID); ?>
-					<!-- <?php $content =  apply_filters('the_content', $post[0]->post_content); $content = str_replace( ']]>', ']]&gt;', $content ); echo $content; ?>-->
-					<a href="<?php echo $post[0]->post_link; ?>" class="btn">more</a>
-				</div>
+			<?php if ( have_posts() ) : ?>
+				<?php while( have_posts()) : the_post(); ?>
+					<?php if ( basename( get_permalink() ) == 'about' ) :?>
+						<div class="grid_12">
+							<header>
+								<h2><span><?php echo the_title(); ?></span></h2>
+							</header>
+						</div>
+						<div class="grid_4">
+							<div class="img_container"><?php echo (has_post_thumbnail() ) ? the_post_thumbnail() : ''; ?></div>
+						</div>
+						<div class="grid_7 preffix_1">
+							<?php echo the_content(); ?>
+							<a href="<?php echo esc_url(get_permalink(get_page_by_title('About Us'))); ?>" class="btn">more</a>
+						</div>
+					<?php endif; ?>
+				<?php endwhile; ?>
+			<?php endif; ?>
 			</div>
 		</div>
 	</div>
@@ -51,26 +55,20 @@
 			<div class="row">
 				<div class="grid_12">
 					<header>
-						<h2><span>Services</span></h2>
+						<h2><span>Riunioni ed eventi</span></h2>
 					</header>
 				</div>
-				<div class="grid_4">
-					<div class="element"><h3><a href="#">Branding</a></h3></div>
+				<div class="grid_6">
+					<div class="element"><h3>Ultime riunioni</h3></div>
+					<div class="box">
+						<p>qui deve venire il box riunioni</p>
+					</div>
 				</div>
-				<div class="grid_4">
-					<div class="element"><h3><a href="#">Graphic Design</a></h3></div>
-				</div>
-				<div class="grid_4">
-					<div class="element"><h3><a href="#">Film + Video</a></h3></div>
-				</div>
-				<div class="grid_4">
-					<div class="element"><h3><a href="#">Social Media</a></h3></div>
-				</div>
-				<div class="grid_4">
-					<div class="element"><h3><a href="#">Website Marketing</a></h3></div>
-				</div>
-				<div class="grid_4">
-					<div class="element"><h3><a href="#">Media & Design</a></h3></div>
+				<div class="grid_6">
+					<div class="element"><h3>Ultime novità</h3></div>
+					<div class="box">
+						<p>qui deve venire il box novità</p>
+					</div>	
 				</div>
 			</div>
 		</div>
@@ -80,7 +78,7 @@
 			<div class="row">
 				<div class="grid_12">
 					<header>
-						<h2><span>Projects</span></h2>
+						<h2><span>News</span></h2>
 					</header>
 				</div>
 			</div>
@@ -131,7 +129,7 @@
 			<div class="row">
 				<div class="grid_12">
 					<header>
-						<h2><span>News</span></h2>
+						<h2><span>Job offers</span></h2>
 					</header>
 				</div>
 				<div class="grid_4">

@@ -13,7 +13,7 @@
 	</div>
 	<![endif]-->
 	<?php wp_head(); ?>
-	 <!-- <script>var $ = jQuery.noConflict();</script>-->
+	<script>var $ = jQuery.noConflict();</script>
 	<!--[if (gt IE 9)|!(IE)]><!-->
 	<script>
 		$(document).ready(function () {
@@ -32,7 +32,7 @@
 				<div class="row">
 					<div class="grid_12">
 						<?php if (empty(get_option('logo'))) : ?>
-							<h1><a href="<?php echo home_url(); ?>">NaLUG</a><span>Napoli GNU/Linux User Group</span></h1>
+							<h1><a href="<?php echo home_url(); ?>"><?php echo bloginfo('title'); ?></a><span><?php echo bloginfo('description'); ?></span></h1>
 						<?php else: ?>
 							<a href="<?php echo home_url(); ?>"><img alt="<?php echo bloginfo('title'); ?>" src="<?php echo get_option('logo'); ?>" /></a>
 						<?php endif;	?>

@@ -426,8 +426,12 @@ p {
   margin-bottom: 25px;
 }
 .index .block-2 p {
-  width: 66%;
-  margin: 0 auto;
+  /*width: 66%;
+  margin: 0 auto;*/
+}
+.index .block-2 ul, .index .block-2 ol{
+  padding-left: 25px;
+  margin: auto !important;
 }
 .index .block-2 .btn {
   margin-top: 33px;
